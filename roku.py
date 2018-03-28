@@ -19,22 +19,22 @@ if __name__ == "__main__":
 
     class MQTTRokuCommandHandler(emulated_roku.RokuCommandHandler):
         """Emulated Roku command handler."""
-
-        def __init__(self):
-            self.hass = ""
+        def publish(event, usn, message):
+            topic = 'roku/'+event
+            publish.single(topic, message, hostname = 'jarvis', port = 1883)
 
         def on_keydown(self, roku_usn, key):
-            publish.single('roku/keydown', key, hostname = 'jarvis', port = 1883)
+            self.publish('keydown', roku_usn, key)
             
         def on_keyup(self, roku_usn, key):
-            publish.single('roku/keyup', key, hostname = 'jarvis', port = 1883)
+            self.publish('keyup', roku_usn, key)
 
         def on_keypress(self, roku_usn, key):
             print(roku_usn)
-            publish.single('roku/keypress', key, hostname = 'jarvis', port = 1883)
+            self.publish('keypress', roku_usn, key)
 
         def launch(self, roku_usn, app_id):
-            publish.single('roku/app', app_id, hostname = 'jarvis', port = 1883)
+            self.publish('app', roku_usn, app_id)
 
 
 

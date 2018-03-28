@@ -1,6 +1,9 @@
-# emulated_roku
+# roku dummy
 
-This library is for emulating the Roku API. Discovery is tested with Logitech Harmony and Android remotes.
-Only key press / down / up events and app launches (10 dummy apps) are implemented in the RokuCommandHandler callback.  
-Other functionality such as input, search will not work.
-See the [example](example.py) on how to use.
+Based on work by Marton Perei over at [gitlab](https://gitlab.com/mindig.marton/emulated_roku)
+
+Emulates a roku device on the network, to fool harmony hub into thinking that there is a roku device on the network. It emits keypress events as mqtt topics to a mqtt broker. Which then can be used in automation setup, to control devices which normally are uncontrollable by harmony hub (like chromecasts.)
+
+See also my chromecast control project [here](https://github.com/tbowmo/chromecastcontrol) which binds chromecast and mqtt together.
+
+Change settings as needed in roku.py before starting it up.
