@@ -6,22 +6,26 @@ if __name__ == "__main__":
     import logging
     import emulated_roku
     import paho.mqtt.publish as publish
-
+    import os
+    
     logging.basicConfig(level=logging.DEBUG)
 
     loop = asyncio.get_event_loop()
 
     servers = []
 
-    DEFAULT_HOST_IP = "0.0.0.0"
-    DEFAULT_LISTEN_PORTS = 8060
+    DEFAULT_HOST_IP = os.environ['HOST_IP']
+    DEFAULT_LISTEN_PORTS = os.environ['HOST_PORT']
+    MQTT_HOST = os.environ['MQTT_HOST']
+    MQTT_PORT = os.environ['MQTT_PORT']
+    
     DEFAULT_UPNP_BIND_MULTICAST = True
 
     class MQTTRokuCommandHandler(emulated_roku.RokuCommandHandler):
         """Emulated Roku command handler."""
-        def publish(event, usn, message):
+        def publish(self, event, usn, message):
             topic = 'roku/'+event
-            publish.single(topic, message, hostname = 'jarvis', port = 1883)
+            publish.single(topic, message, hostname = MQTT_HOST, port = int(MQTT_PORT))
 
         def on_keydown(self, roku_usn, key):
             self.publish('keydown', roku_usn, key)
