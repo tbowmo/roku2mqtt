@@ -18,6 +18,8 @@ if __name__ == "__main__":
     DEFAULT_LISTEN_PORTS = os.environ['HOST_PORT']
     MQTT_HOST = os.environ['MQTT_HOST']
     MQTT_PORT = os.environ['MQTT_PORT']
+    MQTT_USERNAME = os.getenv('MQTT_USERNAME',None)
+    MQTT_PASSWORD = os.getenv('MQTT_PASSWORD',None)
     
     DEFAULT_UPNP_BIND_MULTICAST = True
 
@@ -25,7 +27,7 @@ if __name__ == "__main__":
         """Emulated Roku command handler."""
         def publish(self, event, usn, message):
             topic = 'roku/'+event
-            publish.single(topic, message, hostname = MQTT_HOST, port = int(MQTT_PORT))
+            publish.single(topic, message, hostname = MQTT_HOST, auth={'username':MQTT_USERNAME, 'password':MQTT_PASSWORD}, port = int(MQTT_PORT))
 
         def on_keydown(self, roku_usn, key):
             self.publish('keydown', roku_usn, key)
