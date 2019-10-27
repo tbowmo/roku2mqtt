@@ -41,7 +41,6 @@ def main():
     
     DEFAULT_UPNP_BIND_MULTICAST = True
 
-    @asyncio.coroutine
     async def init(loop):
         roku_api = emulated_roku.EmulatedRokuServer(
             loop, MQTTCommandHandler(
@@ -49,19 +48,8 @@ def main():
                 args.port,
                 args.root
             ),
-            "mqtt_roku", ip, 8060
+            "roku_mqtt", ip, 8060
         )
-            # host_ip=DEFAULT_HOST_IP,
-            # listen_port=DEFAULT_LISTEN_PORTS,
-            # advertise_ip=DEFAULT_HOST_IP,
-            # advertise_port=DEFAULT_LISTEN_PORTS,
-            # bind_multicast=DEFAULT_UPNP_BIND_MULTICAST)  # !Change Host IP!
-
-        # discovery_transport, _ = yield from discovery_endpoint
-        # api_server = yield from roku_api_endpoint
-
-        # servers.append(discovery_transport)
-        # servers.append(api_server)
         await roku_api.start()
 
     loop = asyncio.get_event_loop()
