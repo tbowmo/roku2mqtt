@@ -48,7 +48,7 @@ def main():
                 args.port,
                 args.root
             ),
-            "roku_mqtt", ip, 8060
+            "oYCZZSqp268zcEZWb8FkG4", ip, 8060
         )
         await roku_api.start()
 

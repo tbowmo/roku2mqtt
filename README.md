@@ -28,7 +28,27 @@ Starting with systemd
 ---
 Start by following the description above with virtual-environment
 
-Then 
+Then create a file named roku.service in /etc/systemd/system, with the following content (update paths and hosts as desired)
+```
+[Unit]
+Description=Roku
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/roku_dummy
+ExecStart=/home/pi/roku_dummy/bin/python -m roku -H 192.168.1.64
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then in a terminal, execute the following two commands to enable your new service
+```shell
+# systemctl enable roku.service
+# systemctl start roku.service
+```
 
 ---
 If you wish to run inside a docker container, you can build your own image with `docker build . --tag roku_dummy` and then run it with `docker run roku_dummy <options>` 
