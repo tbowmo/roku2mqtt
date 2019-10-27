@@ -1,3 +1,2 @@
 paho-mqtt
-aiohttp
-shortuuid
+emulated_roku
