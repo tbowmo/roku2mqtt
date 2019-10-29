@@ -1,4 +1,4 @@
-Roku dummy
+Roku2Mqtt
 ===
 
 Python program to emulate a roku device, which sends keypresses on mqtt
@@ -57,10 +57,10 @@ Command line options
 -------------
 Configure through command line options, as shown below
 ```
-usage: roku.py [-h] [-p PORT] [-r ROOT] [-H HOST] [-d] [-v] [-V] [-C]
+usage: roku2mqtt.py [-h] [-p PORT] [-r ROOT] [-H HOST] [-d] [-v] [-V] [-C]
                    [-P LISTEN]
 
-Roku emulator
+Roku mqtt emulator
 
 optional arguments:
   -h, --help            show this help message and exit
