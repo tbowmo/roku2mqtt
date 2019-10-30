@@ -22,7 +22,7 @@ $ pip install --no-cache-dir -r requirements.txt
 
 You are now ready to start the script with
 
-`python -m roku <options>`
+`python -m roku2mqtt <options>`
 
 Starting with systemd
 ---
