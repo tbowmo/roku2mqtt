@@ -57,20 +57,32 @@ Command line options
 -------------
 Configure through command line options, as shown below
 ```
-usage: roku2mqtt.py [-h] [-p PORT] [-r ROOT] [-H HOST] [-d] [-v] [-V] [-C]
-                   [-P LISTEN]
+usage: roku2mqtt [-h] [-p MQTTPORT] [-r MQTTROOT] [-H MQTTHOST] [-l LOGFILE]
+                 [-d] [-v] [-V] [-P LISTEN] [-u USN]
 
-Roku mqtt emulator
+Roku emulator
+
+Emulates a roku box, and publishes keystrokes on mqtt,
+this is particular usefull in conjunction with a
+harmony hub based remote control
 
 optional arguments:
   -h, --help            show this help message and exit
-  -p PORT, --port PORT  MQTT port on host
-  -r ROOT, --root ROOT  MQTT root topic
-  -H HOST, --host HOST  MQTT Host
+  -p MQTTPORT, --mqttport MQTTPORT
+                        Port number for mqtt broker
+  -r MQTTROOT, --mqttroot MQTTROOT
+                        Root topic for mqtt publish
+  -H MQTTHOST, --mqtthost MQTTHOST
+                        Hostname / ip address for mqtt broker
+  -l LOGFILE, --logfile LOGFILE
+                        Log to filename
   -d, --debug           loglevel debug
   -v, --verbose         loglevel info
   -V, --version         show program's version number and exit
-  -C, --cleanup         Cleanup mqtt topic on exit
   -P LISTEN, --listen LISTEN
-                        Listen port
+                        IP address and port for roku api, in the form of
+                        127.0.0.1:8080
+  -u USN, --usn USN     Roku usn
+
+find the project at: https://github.com/tbowmo/roku2mqtt
 ```
