@@ -29,6 +29,8 @@ def parse_args(argv = None):
     parser.add_argument('-V', '--version', action='version', version='%(prog)s {version}'.format(version=__VERSION__))
     parser.add_argument('-P', '--listen', action='store', default="{0}:8080".format(ip), help="IP address and port for roku api, in the form of 127.0.0.1:8080")
     parser.add_argument('-u', '--usn', action='store', default="roku2mqtt", help="Roku usn")
+    parser.add_argument('--mqttuser', action='store', default=None, help='User for mqtt connection')
+    parser.add_argument('--mqttpass', action='store', default=None, help='Password for mqtt connection')
     return parser.parse_args(argv)
 
 def setup_logging(
