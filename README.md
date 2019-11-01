@@ -57,8 +57,9 @@ Command line options
 -------------
 Configure through command line options, as shown below
 ```
-usage: roku2mqtt [-h] [-p MQTTPORT] [-r MQTTROOT] [-H MQTTHOST] [-l LOGFILE]
-                 [-d] [-v] [-V] [-P LISTEN] [-u USN]
+usage: roku2mqtt [-h] [-r MQTTROOT] [-H MQTTHOST] [--mqttport MQTTPORT]
+                 [--mqttuser MQTTUSER] [--mqttpass MQTTPASS] [-l LOGFILE] [-d]
+                 [-v] [-V] [--listen LISTEN] [--usn USN]
 
 Roku emulator
 
@@ -68,21 +69,21 @@ harmony hub based remote control
 
 optional arguments:
   -h, --help            show this help message and exit
-  -p MQTTPORT, --mqttport MQTTPORT
-                        Port number for mqtt broker
   -r MQTTROOT, --mqttroot MQTTROOT
                         Root topic for mqtt publish
   -H MQTTHOST, --mqtthost MQTTHOST
                         Hostname / ip address for mqtt broker
+  --mqttport MQTTPORT   Port number for mqtt broker
+  --mqttuser MQTTUSER   User for mqtt connection
+  --mqttpass MQTTPASS   Password for mqtt connection
   -l LOGFILE, --logfile LOGFILE
                         Log to filename
   -d, --debug           loglevel debug
   -v, --verbose         loglevel info
   -V, --version         show program's version number and exit
-  -P LISTEN, --listen LISTEN
-                        IP address and port for roku api, in the form of
-                        127.0.0.1:8080
-  -u USN, --usn USN     Roku usn
+  --listen LISTEN       IP address and port for roku api, in the form of
+                        192.168.3.113:8080
+  --usn USN             Roku usn
 
-find the project at: https://github.com/tbowmo/roku2mqtt
+I have detected this machines ip as: 192.168.3.113
 ```

@@ -18,19 +18,19 @@ def parse_args(argv = None):
     parser = argparse.ArgumentParser(prog='roku2mqtt',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description='Roku emulator\n\nEmulates a roku box, and publishes keystrokes on mqtt,\nthis is particular usefull in conjunction with a\nharmony hub based remote control', 
-        epilog='find the project at: https://github.com/tbowmo/roku2mqtt'
+        epilog='I have detected this machines ip as: {0}'.format(ip)
         )
-    parser.add_argument('-p', '--mqttport', action="store", default=1883, type=int, help="Port number for mqtt broker")
     parser.add_argument('-r', '--mqttroot', action="store", default="roku", help="Root topic for mqtt publish")
     parser.add_argument('-H', '--mqtthost', action="store", default="127.0.0.1", help="Hostname / ip address for mqtt broker")
+    parser.add_argument('--mqttport', action="store", default=1883, type=int, help="Port number for mqtt broker")
+    parser.add_argument('--mqttuser', action='store', default=None, help='User for mqtt connection')
+    parser.add_argument('--mqttpass', action='store', default=None, help='Password for mqtt connection')
     parser.add_argument('-l', '--logfile', action="store", default=None, help="Log to filename")
     parser.add_argument('-d', '--debug', action="store_const", dest="log", const=logging.DEBUG, help="loglevel debug")
     parser.add_argument('-v', '--verbose', action="store_const", dest="log", const=logging.INFO, help="loglevel info")
     parser.add_argument('-V', '--version', action='version', version='%(prog)s {version}'.format(version=__VERSION__))
-    parser.add_argument('-P', '--listen', action='store', default="{0}:8080".format(ip), help="IP address and port for roku api, in the form of 127.0.0.1:8080")
-    parser.add_argument('-u', '--usn', action='store', default="roku2mqtt", help="Roku usn")
-    parser.add_argument('--mqttuser', action='store', default=None, help='User for mqtt connection')
-    parser.add_argument('--mqttpass', action='store', default=None, help='Password for mqtt connection')
+    parser.add_argument('--listen', action='store', default="{0}:8080".format(ip), help="IP address and port for roku api, in the form of {0}:8080".format(ip))
+    parser.add_argument('--usn', action='store', default="roku2mqtt", help="Roku usn")
     return parser.parse_args(argv)
 
 def setup_logging(
