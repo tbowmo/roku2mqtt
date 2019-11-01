@@ -1,3 +1,2 @@
-paho-mqtt
-aiohttp
-shortuuid
+paho-mqtt==1.4.0
+emulated_roku==0.1.8
