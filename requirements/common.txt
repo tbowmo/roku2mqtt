@@ -1,0 +1,2 @@
+paho-mqtt>=1.6.0
+emulated_roku==0.2.1
